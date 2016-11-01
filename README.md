@@ -2,7 +2,7 @@
 A playground for setting up .Net core on windows and linux
 
 # Props to Scott Hanselman
-I followed [this post|http://www.hanselman.com/blog/PublishingAnASPNETCoreWebsiteToACheapLinuxVMHost.aspx] to set things up.
+I followed [this post](http://www.hanselman.com/blog/PublishingAnASPNETCoreWebsiteToACheapLinuxVMHost.aspx) to set things up on linux.
 
 # Setup
 - install VirtualBox 5.1.8 
