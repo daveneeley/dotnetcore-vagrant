@@ -14,10 +14,18 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.define "win" do |win|
     win.vm.box = "mwrock/Windows2016"
+    win.vm.synced_folder = "salt/roots", "c:\salt-roots"
   end
 
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.box = "ubuntu/trusty64"
+    ubuntu.vm.synced_folder = "salt/roots", "/srv/salt"
+  end
+
+  config.vm.provision :salt do |salt|
+    salt.masterless = true
+    salt.minion_config = "salt/minion"
+    salt.run_highstate = true
   end
 
 end
