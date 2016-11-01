@@ -12,6 +12,6 @@ I followed [this post|http://www.hanselman.com/blog/PublishingAnASPNETCoreWebsit
 - cd dotnetcore-vagrant
 - vagrant up
 
-Note the windows image is 3GB and may take some time to download. On my less-than-developer-class PC I also ran into timeout issues with the windows VM, but it did start eventually. YMMV.
+The windows image is commented out in the Vagrant file. The image is 3GB and may take some time to download. On my less-than-developer-class PC I also ran into timeout issues with it, but it did start eventually. YMMV.
 
 

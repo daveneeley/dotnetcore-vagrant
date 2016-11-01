@@ -13,14 +13,14 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
 
-  config.vm.define "win" do |win|
-    win.vm.box = "mwrock/Windows2016"
-    win.vm.synced_folder = "salt/roots", "c:\salt-roots"
-  end
+  config.vm.synced_folder "salt/roots", "/srv"
+
+  #config.vm.define "win" do |win|
+  #  win.vm.box = "mwrock/Windows2016"
+  #end
 
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.box = "ubuntu/trusty64"
-    ubuntu.vm.synced_folder "salt/roots", "/srv"
   end
 
   config.vm.provision :salt do |salt|
