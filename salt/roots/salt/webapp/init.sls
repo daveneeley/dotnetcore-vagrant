@@ -26,6 +26,10 @@ restore_webapp:
     - creates: /home/webapp/project.lock.json
 
 prepare_www:
+  file.directory:
+    - name: /var/www
+
+clean_published_webapp:
   file.absent:
     - name: /var/www/webapp
 
@@ -38,10 +42,12 @@ publish_webapp:
   file.rename:
     - name: /var/www/webapp
     - source: /home/webapp/bin/Debug/netcoreapp1.0/publish
+    - watch_in:
+      - service: supervisor
 
 webapp_supervisor_conf:
   file.managed:
     - name: /etc/supervisor/conf.d/webapp.conf
     - source: salt://webapp/webapp.supervisor.conf
-    - listen_in:
+    - watch_in:
       - service: supervisor
