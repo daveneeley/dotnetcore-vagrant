@@ -17,10 +17,12 @@ Vagrant.configure("2") do |config|
 
   #config.vm.define "win" do |win|
   #  win.vm.box = "mwrock/Windows2016"
+  #  ubuntu.vm.network "forwarded_port", guest: 5000, host: 8080 
   #end
 
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.box = "ubuntu/trusty64"
+    ubuntu.vm.network "forwarded_port", guest: 5000, host: 8081 
   end
 
   config.vm.provision :salt do |salt|
