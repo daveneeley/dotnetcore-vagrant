@@ -24,3 +24,24 @@ restore_webapp:
     - cwd: /home/webapp
     - runas: webapp
     - creates: /home/webapp/project.lock.json
+
+prepare_www:
+  file.absent:
+    - name: /var/www/webapp
+
+publish_webapp:
+  cmd.run:
+    - name: dotnet publish
+    - cwd: /home/webapp
+    - runas: webapp
+    - creates: /home/webapp/bin/Debug/netcoreapp1.0/publish
+  file.rename:
+    - name: /var/www/webapp
+    - source: /home/webapp/bin/Debug/netcoreapp1.0/publish
+
+webapp_supervisor_conf:
+  file.managed:
+    - name: /etc/supervisor/conf.d/webapp.conf
+    - source: salt://webapp/webapp.supervisor.conf
+    - watch_in:
+      - service: setup_supervisor_service
