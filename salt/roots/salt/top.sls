@@ -1,5 +1,3 @@
 base:
   '*':
-    - dotnetcore
-    - npm
     - webapp

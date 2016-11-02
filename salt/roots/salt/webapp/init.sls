@@ -1,3 +1,8 @@
+include: 
+  - supervisor
+  - dotnetcore
+  - npm
+
 make_webapp_user:
   user.present:
     - name: webapp
