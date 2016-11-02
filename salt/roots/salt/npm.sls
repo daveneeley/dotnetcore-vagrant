@@ -4,8 +4,8 @@ default_site_dependencies:
 
 install_npm_gulp:
   cmd.run:
-    - name: npm install gulp
+    - name: npm install -g gulp
   
 install_npm_bower:
   cmd.run:
-    - name: npm install bower
+    - name: npm install -g bower
