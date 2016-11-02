@@ -22,16 +22,16 @@ manage_hosting_json:
   file.managed:
     - name: /home/webapp/hosting.json
     - source: salt://webapp/hosting.json
-{#
+
 restore_webapp:
   cmd.run:
     - name: dotnet restore
     - cwd: /home/webapp
     - runas: webapp
+    - creates: /home/webapp/project.lock.json
 
 run_webapp:
   cmd.run:
     - name: dotnet run
     - cwd: /home/webapp
     - runas: webapp
-#}
