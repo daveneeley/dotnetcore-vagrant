@@ -43,5 +43,5 @@ webapp_supervisor_conf:
   file.managed:
     - name: /etc/supervisor/conf.d/webapp.conf
     - source: salt://webapp/webapp.supervisor.conf
-    - watch_in:
-      - service: setup_supervisor_service
+    - listen_in:
+      - service: supervisor
