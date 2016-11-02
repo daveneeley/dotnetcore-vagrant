@@ -42,12 +42,16 @@ publish_webapp:
   file.rename:
     - name: /var/www/webapp
     - source: /home/webapp/bin/Debug/netcoreapp1.0/publish
-    - watch_in:
-      - service: supervisor
 
 webapp_supervisor_conf:
   file.managed:
     - name: /etc/supervisor/conf.d/webapp.conf
     - source: salt://webapp/webapp.supervisor.conf
-    - watch_in:
-      - service: supervisor
+
+start_supervisor:
+  service.running:
+    - name: supervisor
+    - restart: True
+    - onchanges:
+      - file: webapp_supervisor_conf
+      - file: publish_webapp
